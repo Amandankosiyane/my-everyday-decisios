@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<title>Everyday decisions</title>
+    <head>
+    <link href="myEverydayDecisions.css" rel="stylesheet" type="text/css">
+            <script src="handlebars-v4.0.5.js"></script>
+        <h1><b><i>MONTHLY TRANSPORT FEES!!!</i></b></h1>
+    </head>
+    <body>
+                <div id="content" align="center">
+                    <label><b><i>Amount:</i></b></label>
+            <input class="dailyAmount" type="text" placeholder="Please enter the amount">
+            <button id="checkBtn"><b><i>Check</i></b></button>
+            </div>
+        
+        <script class="monthlyFees" type="text/x-handlebars-template">
+        <table align="center" border="10">
+            <th>AMOUNT BEFORE</th>
+            <th>AMOUNT DEDUCTED</th>
+            <th>AVAILABLE BALANCE</th>
+            
+            <tr>
+                <td>R {{amountBefore}}</td>
+                <td style="color:red;">R -{{amountDeducted}}</td>
+                <td style="color:blue;">R {{availableBalance}}</td>
+            </tr>
+            </table>
+        </script>
+        <p id="display"></p>
+        <br>
+        <div id="rechrging" align="right">
+                    <button id="ricBtn"><b><i>Recharge</i></b></button>
+            <br><br>
+            <label><b><i>AMOUNT BEFORE:</i></b></label>
+        <input id="rechargingAmount" type="text" placeholder="please recharge here">
+            </div>
+    </body>
+            <script src="myEverydayDecisions.js" charset="utf-8"></script>
+
+</html>

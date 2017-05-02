@@ -16,7 +16,7 @@
         <script class="monthlyFees" type="text/x-handlebars-template">
         <table align="center" border="10">
             <th>AMOUNT BEFORE</th>
-            <th>AMOUNT DEDUCTED</th>
+            <th>AMOUNT DEDUCTED (per day)</th>
             <th>AVAILABLE BALANCE</th>
             
             <tr>
@@ -26,15 +26,18 @@
             </tr>
             </table>
         </script>
-        <p id="display"></p>
         <br>
         <div id="rechrging" align="right">
                     <button id="ricBtn"><b><i>Recharge</i></b></button>
             <br><br>
             <label><b><i>AMOUNT BEFORE:</i></b></label>
         <input id="rechargingAmount" type="text" placeholder="please recharge here">
+            <br><br>
+            <button id="resetBtn"><b>RESET</b></button>
+</form>
+            <p id="display"></p>
+
             </div>
     </body>
             <script src="myEverydayDecisions.js" charset="utf-8"></script>
-
 </html>

@@ -7,37 +7,54 @@
         <h1><b><i>MONTHLY TRANSPORT FEES!!!</i></b></h1>
     </head>
     <body>
-                <div id="content" align="center">
-                    <label><b><i>Amount:</i></b></label>
-            <input class="dailyAmount" type="text" placeholder="Please enter the amount">
-            <button id="checkBtn"><b><i>Check</i></b></button>
-            </div>
         
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()"><h6> Welcome to my monthly transport fee web page...</h6></span>
+        
+<div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <div class="overlay-content" align="center">
+
+      <div id="content" align="center">
+          <h5 style="color:blue">MONTHLY TRANSPORT FEES</h5>
+                    <label><b><i>AMOUNT:</i></b></label>
+            <input class="dailyAmount" type="text" placeholder="Please enter the amount">
+            <button class="checkBtn"><b><i>Check</i></b></button>
+            </div>
+        <br>
         <script class="monthlyFees" type="text/x-handlebars-template">
-        <table align="center" border="10">
-            <th>AMOUNT BEFORE</th>
-            <th>AMOUNT DEDUCTED (per day)</th>
-            <th>AVAILABLE BALANCE</th>
-            
-            <tr>
+                {{#infoList}}
+                <tr>
                 <td>R {{amountBefore}}</td>
                 <td style="color:red;">R -{{amountDeducted}}</td>
                 <td style="color:blue;">R {{availableBalance}}</td>
-            </tr>
-            </table>
+                </tr> 
+                {{/infoList}}  
         </script>
+        <table align="center" border="10">
+              <tr>
+            <th>AMOUNT BEFORE</th>
+            <th>AMOUNT DEDUCTED (per day)</th>
+            <th>AVAILABLE BALANCE</th>
+            </tr>
+              <tbody class="tableBody">
+              </tbody>   
+      </table>
         <br>
         <div id="rechrging" align="right">
                     <button id="ricBtn"><b><i>Recharge</i></b></button>
             <br><br>
-            <label><b><i>AMOUNT BEFORE:</i></b></label>
+            <label style="color:lightBlue"><b><i>RECHARGE AMOUNT:</i></b></label>
         <input id="rechargingAmount" type="text" placeholder="please recharge here">
             <br><br>
             <button id="resetBtn"><b>RESET</b></button>
-</form>
-            <p id="display"></p>
+<!--            <p id="display"></p>-->
 
             </div>
     </body>
             <script src="myEverydayDecisions.js" charset="utf-8"></script>
+      
+  </div>
+</div>
+
+                
 </html>

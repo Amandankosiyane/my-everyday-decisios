@@ -1,71 +1,69 @@
 "use strict";
-var infoList = [{amountDeducted: 0, availableBalance: 0, amountBefore:0}]; 
-
+var infoList = {amountBefore: 0, amountDeducted: 0, availableBalance: 0};
+console.log(infoList.amountDeducted)
+var tbleBody = document.querySelector(".tableBody");
 var rechargeAmountDeducted = document.querySelector("#anotherAmount");
 var rechargeAmountBefore = document.querySelector("#rechargingAmount");
-var userDisplay = document.querySelector("#display");
+var theCheckBtn = document.querySelector(".checkBtn");
+var addingAmount = document.querySelector("#ricBtn");
+
 var template = document.querySelector(".monthlyFees").innerHTML;
+console.log(template)
 var theTemplate = Handlebars.compile(template);
 
 
 var storedInfoList = localStorage.getItem('infoList');
 if(storedInfoList){
     infoList = JSON.parse(storedInfoList);
-    var results = theTemplate(
-        infoList
-    );
+    var results = theTemplate({infoList : infoList});
+    tbleBody.innerHTML+= results;
 
-    userDisplay.innerHTML += results;
 }
 
 
-var deductAmount = document.querySelector("#checkBtn");
-deductAmount.addEventListener('click', transportFees);
 
 function transportFees(){
     "use strict";
     
     var dailyAmount = Number(document.querySelector(".dailyAmount").value);
-    infoList.amountDeducted += dailyAmount;
-    infoList.availableBalance = infoList.amountBefore - infoList.amountDeducted;
+    
+        infoList.amountBefore -= dailyAmount;
+//    infoList.amountBefore = infoList.amountDeducted + infoList.availableBalance;
+        infoList.amountDeducted = dailyAmount;
+        infoList.availableBalance = infoList.amountBefore - infoList.amountDeducted;
+
     
     var dataToStore = JSON.stringify(infoList);
+    console.log(infoList);
     console.log(dataToStore);
 
         localStorage.setItem('infoList', dataToStore);
     
-    //console.log(infoList)
-    var results = theTemplate(
-        infoList
-    );
-
-    userDisplay.innerHTML = results;
+var results = theTemplate({infoList : infoList});
+    tbleBody.innerHTML+= results;
+}
+theCheckBtn.addEventListener('click', transportFees)
     
-    }
-   
 
-var addingAmount = document.querySelector("#ricBtn");
-addingAmount.addEventListener('click', rechargeFees);
+
 
 function rechargeFees(){
-         var dailyAmount = Number(document.querySelector(".dailyAmount").value);
-        //replace the values of objects and converting the number from string to interger
-        var amountBefore = parseInt(rechargeAmountBefore.value); 
-        var  availableBalance = infoList.amountBefore - infoList.amountDeducted;
-
-        var amountAdding = {};
-//    {amountDeducted: 0, availableBalance: 0, amountBefore:0}
-
-        createProperty('amountDeducted', dailyAmount)
-        createProperty('availableBalance', availableBalance)
-        createProperty('amountBefore', amountBefore)
-        
-        function createProperty(propertyName,propertyValue){
-            amountAdding [propertyName] = propertyValue;
-        }
-        infoList.push(amountAdding);
-
     
+    var updateFees = document.querySelector("#rechargingAmount");
+    var amountAdding = [];
+        console.log(dataToStore);
+//        infoList.amountBefore += parseInt(rechargeAmountBefore.value); 
+        infoList.availableBalance = infoList.amountBefore - infoList.amountDeducted;
+    
+    
+        createProperty('amountBefore', parseInt(updateFees.value));
+    function createProperty(propertyName, propertyValue){
+        amountAdding[propertyName] = propertyValue;
+    }
+    
+    infoList.amountBefore = infoList.amountBefore + amountAdding.amountBefore;
+        infoList.availableBalance += infoList.amountBefore;
+
         var dataToStore = JSON.stringify(infoList);
         console.log(dataToStore);
     
@@ -73,110 +71,14 @@ function rechargeFees(){
         
         rechargeAmountBefore.value ="";
     
-        var results = theTemplate(
-            infoList
-        );
+}
+addingAmount.addEventListener('click', rechargeFees);
 
-        userDisplay.innerHTML = results;
-    
-    
+
+function openNav() {
+    document.getElementById("myNav").style.height = "100%";
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//"use strict";
-//var infoList = {amountDeducted: 0, availableBalance: 0, amountBefore:0}; 
-//var rechargeAmountDeducted = document.querySelector("#anotherAmount");
-//var rechargeAmountBefore = document.querySelector("#rechargingAmount");
-//var userDisplay = document.querySelector("#display");
-//var template = document.querySelector(".monthlyFees").innerHTML;
-//var theTemplate = Handlebars.compile(template);
-//
-//
-//var storedInfoList = localStorage.getItem('infoList');
-//if(storedInfoList){
-//    infoList = JSON.parse(storedInfoList);
-//    var results = theTemplate(
-//        infoList
-//    );
-//
-//    userDisplay.innerHTML += results;
-//}
-//
-//
-//var deductAmount = document.querySelector("#checkBtn");
-//deductAmount.addEventListener('click', transportFees);
-//
-//function transportFees(){
-//    "use strict";
-//    
-//    var dailyAmount = Number(document.querySelector(".dailyAmount").value);
-//    infoList.amountDeducted += dailyAmount;
-//    infoList.availableBalance = infoList.amountBefore - infoList.amountDeducted;
-//    
-//    var dataToStore = JSON.stringify(infoList);
-//    console.log(dataToStore);
-//
-//        localStorage.setItem('infoList', dataToStore);
-//    
-//    //console.log(infoList)
-//    var results = theTemplate(
-//        infoList
-//    );
-//
-//    userDisplay.innerHTML += results;
-//    
-//    }
-//   
-//
-//var addingAmount = document.querySelector("#ricBtn");
-//addingAmount.addEventListener('click', rechargeFees);
-//
-//function rechargeFees(){
-//    
-//        //replace the values of objects and converting the number from string to interger
-//        infoList.amountBefore = parseInt(rechargeAmountBefore.value); 
-//        infoList.availableBalance = infoList.amountBefore - infoList.amountDeducted;
-//        
-////    var amountAdding = {};
-////    function createProperty(propertyName,propertyValue){
-////  amountAdding [propertyName] = propertyValue;
-////}
-////    infoList.push(amountAdding);
-//    
-//    
-//        var dataToStore = JSON.stringify(infoList);
-//        console.log(dataToStore);
-//    
-//        localStorage.setItem('infoList', dataToStore);
-//        
-//        rechargeAmountBefore.value ="";
-//    
-//        var results = theTemplate(
-//            infoList
-//        );
-//
-//        userDisplay.innerHTML += results;
-//    
-//    
-//}
-//
-//
-//
-//
+function closeNav() {
+    document.getElementById("myNav").style.height = "0%";
+}

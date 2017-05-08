@@ -32,7 +32,7 @@ function transportFees(){
         infoList.amountDeducted = dailyAmount;
         infoList.availableBalance = infoList.amountBefore - infoList.amountDeducted;
     if(infoList.availableBalance <100){
-        window.alert('please recharge');
+        window.alert('You are running out of money please recharge');
     }
 
     

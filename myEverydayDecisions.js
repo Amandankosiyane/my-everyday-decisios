@@ -29,9 +29,11 @@ function transportFees(){
     var dailyAmount = Number(document.querySelector(".dailyAmount").value);
     
         infoList.amountBefore -= dailyAmount;
-//    infoList.amountBefore = infoList.amountDeducted + infoList.availableBalance;
         infoList.amountDeducted = dailyAmount;
         infoList.availableBalance = infoList.amountBefore - infoList.amountDeducted;
+    if(infoList.availableBalance <100){
+        window.alert('please recharge');
+    }
 
     
     var dataToStore = JSON.stringify(infoList);

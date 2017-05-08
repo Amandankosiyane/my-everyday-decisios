@@ -6,6 +6,7 @@ var rechargeAmountDeducted = document.querySelector("#anotherAmount");
 var rechargeAmountBefore = document.querySelector("#rechargingAmount");
 var theCheckBtn = document.querySelector(".checkBtn");
 var addingAmount = document.querySelector("#ricBtn");
+var clearBtn = document.querySelector("#resetBtn");
 
 var template = document.querySelector(".monthlyFees").innerHTML;
 console.log(template)
@@ -73,6 +74,15 @@ function rechargeFees(){
     
 }
 addingAmount.addEventListener('click', rechargeFees);
+
+
+
+function clearData(){
+localStorage.infoList = "";
+   tbleBody.innerHTML =  theTemplate({infoList : infoList});
+}
+
+clearBtn.addEventListener('click', clearData);
 
 
 function openNav() {

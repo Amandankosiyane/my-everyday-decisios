@@ -1,18 +1,10 @@
 html{
-/*    background-color: slategray;*/
     background-image: url(background.jpg);
     background-size: cover;
     overflow: scroll;
 }
 
 
-h1{
-    text-align: center;
-}
-
-h5{
-    font-size: 50px;
-}
 table{
     width: 60%;
     border-color: slategrey;
@@ -21,6 +13,13 @@ table{
     border-spacing: 3px;
     background-color: lightblue;
 
+}
+h1{
+    text-align: center;
+}
+
+h5{
+    font-size: 50px;
 }
 
 td{
@@ -47,12 +46,11 @@ h6{
     z-index: 1;
     top: 0;
     left: 0;
-/*    background-color: slategray;*/
     background-image: url(myLovelyCar.jpg);
     background-size: cover;
     background-attachment: fixed;
     overflow-y: auto;
-    transition: 5s;
+    transition: 3s;
 }
 
 .overlay-content {
@@ -69,7 +67,7 @@ h6{
     font-size: 36px;
     color: #818181;
     display: block;
-    transition: 5s;
+    transition: 3s;
 }
 
 .overlay a:hover, .overlay a:focus {

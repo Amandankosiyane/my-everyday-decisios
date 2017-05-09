@@ -1,9 +1,7 @@
 html{
-/*
-    background-image: url(https://avisassets.abgemea.com/.imaging/featureImageLarge/dms/DMS/local/ZA/fleet/fleet-page/luxury-cars-feature.jpg);
+/*    background-color: slategray;*/
+    background-image: url(background.jpg);
     background-size: cover;
-*/
-    background-color: slategray;
     overflow: scroll;
 }
 
@@ -52,6 +50,7 @@ h6{
 /*    background-color: slategray;*/
     background-image: url(myLovelyCar.jpg);
     background-size: cover;
+    background-attachment: fixed;
     overflow-y: auto;
     transition: 5s;
 }

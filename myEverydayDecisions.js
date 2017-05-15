@@ -1,15 +1,13 @@
 "use strict";
 var infoList = {amountBefore: 0, amountDeducted: 0, availableBalance: 0};
-console.log(infoList.amountDeducted)
 var tbleBody = document.querySelector(".tableBody");
-var rechargeAmountDeducted = document.querySelector("#anotherAmount");
-var rechargeAmountBefore = document.querySelector("#rechargingAmount");
-var theCheckBtn = document.querySelector(".checkBtn");
-var addingAmount = document.querySelector("#ricBtn");
-var clearBtn = document.querySelector("#resetBtn");
+var updateAmountBefore = document.querySelector(".rechargingAmount");
+var updatesBtn = document.querySelector(".checkBtn");
+var addingAmount = document.querySelector(".ricBtn");
+var clearBtn = document.querySelector(".resetBtn");
+var display = document.querySelector('.output');
 
 var template = document.querySelector(".monthlyFees").innerHTML;
-console.log(template)
 var theTemplate = Handlebars.compile(template);
 
 
@@ -25,55 +23,56 @@ if(storedInfoList){
 
 function transportFees(){
     "use strict";
-    
+
     var dailyAmount = Number(document.querySelector(".dailyAmount").value);
-    
-        infoList.amountBefore -= dailyAmount;
-        infoList.amountDeducted = dailyAmount;
-        infoList.availableBalance = infoList.amountBefore - infoList.amountDeducted;
+
+
+if(dailyAmount !==''){
+  infoList.amountBefore = infoList.availableBalance;
+  infoList.amountDeducted = dailyAmount;
+  infoList.availableBalance = infoList.amountBefore - infoList.amountDeducted;
+}
     if(infoList.availableBalance <100){
         window.alert('You are running out of money please recharge');
     }
 
-    
+
+
     var dataToStore = JSON.stringify(infoList);
-    console.log(infoList);
-    console.log(dataToStore);
+
 
         localStorage.setItem('infoList', dataToStore);
-    
+
 var results = theTemplate({infoList : infoList});
     tbleBody.innerHTML+= results;
-}
-theCheckBtn.addEventListener('click', transportFees)
-    
+  }
+updatesBtn.addEventListener('click', transportFees);
+
 
 
 
 function rechargeFees(){
-    
-    var updateFees = document.querySelector("#rechargingAmount");
+
+    var updateFees = document.querySelector(".rechargingAmount");
     var amountAdding = [];
-        console.log(dataToStore);
-//        infoList.amountBefore += parseInt(rechargeAmountBefore.value); 
-        infoList.availableBalance = infoList.amountBefore - infoList.amountDeducted;
-    
-    
+
+
         createProperty('amountBefore', parseInt(updateFees.value));
     function createProperty(propertyName, propertyValue){
         amountAdding[propertyName] = propertyValue;
     }
-    
+
     infoList.amountBefore = infoList.amountBefore + amountAdding.amountBefore;
         infoList.availableBalance += infoList.amountBefore;
 
+        if(updateAmountBefore.value >1000){
+              display.innerHTML= ('Thats a lot of money for one month!!!');
+        }
         var dataToStore = JSON.stringify(infoList);
-        console.log(dataToStore);
-    
+
         localStorage.setItem('infoList', dataToStore);
-        
-        rechargeAmountBefore.value ="";
-    
+
+        updateAmountBefore.value ="";
 }
 addingAmount.addEventListener('click', rechargeFees);
 

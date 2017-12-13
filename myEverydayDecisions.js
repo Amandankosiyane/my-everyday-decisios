@@ -1,10 +1,10 @@
 "use strict";
 var infoList = {amountBefore: 0, amountDeducted: 0, availableBalance: 0};
 var tbleBody = document.querySelector(".tableBody");
-var updateAmountBefore = document.querySelector(".rechargingAmount");
-var updatesBtn = document.querySelector(".checkBtn");
-var addingAmount = document.querySelector(".ricBtn");
-var clearBtn = document.querySelector(".resetBtn");
+var updateAmountBefore = document.querySelector("#rechargingAmount");
+var updatesBtn = document.querySelector("#checkBtn");
+var addingAmount = document.querySelector("#ricBtn");
+var clearBtn = document.querySelector("#resetBtn");
 var display = document.querySelector('.output');
 
 var template = document.querySelector(".monthlyFees").innerHTML;
@@ -19,13 +19,8 @@ if(storedInfoList){
 
 }
 
-
-
 function transportFees(){
-    "use strict";
-
-    var dailyAmount = Number(document.querySelector(".dailyAmount").value);
-
+    var dailyAmount = Number(document.querySelector("#dailyAmount").value);
 
 if(dailyAmount !==''){
   infoList.amountBefore = infoList.availableBalance;
@@ -34,10 +29,8 @@ if(dailyAmount !==''){
 }
     if(infoList.availableBalance <100){
         window.alert('You are running out of money please recharge');
+        return
     }
-
-
-
     var dataToStore = JSON.stringify(infoList);
 
 
@@ -45,15 +38,13 @@ if(dailyAmount !==''){
 
 var results = theTemplate({infoList : infoList});
     tbleBody.innerHTML+= results;
+    dailyAmount.value ="";
   }
 updatesBtn.addEventListener('click', transportFees);
 
-
-
-
 function rechargeFees(){
 
-    var updateFees = document.querySelector(".rechargingAmount");
+    var updateFees = document.querySelector("#rechargingAmount");
     var amountAdding = [];
 
 
@@ -66,7 +57,8 @@ function rechargeFees(){
         infoList.availableBalance += infoList.amountBefore;
 
         if(updateAmountBefore.value >1000){
-              display.innerHTML= ('Thats a lot of money for one month!!!');
+             window.alert ('Thats a lot of money for one month!!!');
+              return
         }
         var dataToStore = JSON.stringify(infoList);
 
@@ -84,12 +76,3 @@ localStorage.infoList = "";
 }
 
 clearBtn.addEventListener('click', clearData);
-
-
-function openNav() {
-    document.getElementById("myNav").style.height = "100%";
-}
-
-function closeNav() {
-    document.getElementById("myNav").style.height = "0%";
-}

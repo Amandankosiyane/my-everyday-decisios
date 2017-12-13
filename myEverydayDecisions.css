@@ -1,19 +1,4 @@
-html{
-    background-image: url(background.jpg);
-    background-size: cover;
-    overflow: scroll;
-}
 
-
-table{
-    width: 60%;
-    border-color: slategrey;
-    text-align: center;
-    border-collapse: separate;
-    border-spacing: 3px;
-    background-color: lightblue;
-
-}
 .output{
   font-size: 5em;
 }
@@ -24,17 +9,6 @@ h1{
 
 h5{
     font-size: 50px;
-}
-
-td{
-    font-weight: 100;
-    border: 3px solid black;
-    border-collapse: collapse;
-}
-
-th{
-         border: 5px solid black;
-        height: 35px;
 }
 
 

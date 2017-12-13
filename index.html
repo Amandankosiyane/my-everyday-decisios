@@ -3,54 +3,66 @@
 <title>Everyday decisions</title>
     <head>
     <link href="myEverydayDecisions.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/solar/bootstrap.min.css" rel="stylesheet" integrity="sha384-GC77SCz5O11gVtXl0sSfbQYEWSSznn1wPDHgL1BGUTFU9iEoUrG4IOJa5CBVY8kR" crossorigin="anonymous">
             <script src="handlebars-v4.0.5.js"></script>
     </head>
     <body>
+<div class="container">
+        <div class="row">
 
-        <span style="font-size:30px;cursor:pointer" onclick="openNav()"><h6> Welcome to my monthly transport fees web page...</h6></span>
+                          <div class="content" align="center">
+                              <h1 style="color:blue">MONTHLY TRANSPORT FEES</h1>
+                              <br><br>
+                              <div class="col-sm-4">
+                                      <div class="form-group has-success">
+                                        <label class="form-control-label" for="addingBrand">Deductions:</label>
+                                        <input type="text" value="" class="form-control is-valid" id="dailyAmount" placeholder="Enter the amount you want to deduct" maxlength="6">
+                                        <br>
+                                        <button id="checkBtn" type="button" class="btn btn-info">Check and deduct</button>
+                                        </div>
+                              </div>
+                                </div>
+                            <br>
+                            <script class="monthlyFees" type="text/x-handlebars-template">
+                                    {{#infoList}}
+                                    <tr>
+                                    <td>R {{amountBefore}}</td>
+                                    <td style="color:red;">R -{{amountDeducted}}</td>
+                                    <td style="color:blue;">R {{availableBalance}}</td>
+                                    </tr>
+                                    {{/infoList}}
+                            </script>
+                            <table class="table table-hover" align="center">
+                                  <tr>
+                                <th>AMOUNT BEFORE</th>
+                                <th>AMOUNT DEDUCTED (per day)</th>
+                                <th>AVAILABLE BALANCE</th>
+                                </tr>
+                                  <tbody class="tableBody">
+                                  </tbody>
+                          </table>
+                            <br>
+                            <div class="output"></div>
 
-<div id="myNav" class="overlay">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">go back to the main screen</a>
-  <div class="overlay-content" align="center">
-
-
-          <div class="content" align="center">
-              <h5 style="color:blue">MONTHLY TRANSPORT FEES</h5>
-                        <label><b><i>deductions:</i></b></label>
-                <input class="dailyAmount" type="text" placeholder="Please enter the amount">
-                <button class="checkBtn"><b><i>Check & deduct</i></b></button>
-                </div>
-            <br>
-            <script class="monthlyFees" type="text/x-handlebars-template">
-                    {{#infoList}}
-                    <tr>
-                    <td>R {{amountBefore}}</td>
-                    <td style="color:red;">R -{{amountDeducted}}</td>
-                    <td style="color:blue;">R {{availableBalance}}</td>
-                    </tr>
-                    {{/infoList}}
-            </script>
-            <table align="center" border="10">
-                  <tr>
-                <th>AMOUNT BEFORE</th>
-                <th>AMOUNT DEDUCTED (per day)</th>
-                <th>AVAILABLE BALANCE</th>
-                </tr>
-                  <tbody class="tableBody">
-                  </tbody>
-          </table>
-            <br>
-            <div class="output"></div>
-
-            <div class="rechrging" align="right">
-                        <button class="ricBtn"><b><i>update</i></b></button>
-                <br><br>
-                <label style="color:lightBlue"><b><i>updates:</i></b></label>
-            <input class="rechargingAmount" type="text" placeholder="please recharge here">
-                <br><br>
-                <button class="resetBtn" onclick="window.location.reload()"><b>RESET</b></button>
-
-                </div>
+                            <div class="rechrging" align="right">
+                                    <div class="col-sm-4">
+                                            <form class="form-inline">
+                                            <div class="form-group has-success">
+                                              <label class="form-control-label" for="addingBrand">Updates:</label>
+                                              <input type="text" value="" class="form-control is-valid" id="rechargingAmount" placeholder="Please recharge here" maxlength="6">
+                                              <button id="ricBtn" type="button" class="btn btn-info">Update</button>
+                                              <br><br>
+                                              <button id="resetBtn" onclick="window.location.reload()" type="button" class="btn btn-info">Reset</button>
+                                              </div>
+                                      </form>
+                                    </div>
+                                </div>
+        </div>
+</div>
     </body>
             <script src="myEverydayDecisions.js" charset="utf-8"></script>
 
